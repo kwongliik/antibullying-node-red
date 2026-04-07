@@ -1,0 +1,562 @@
+[
+    {
+        "id": "5d2b2732480a3bf7",
+        "type": "tab",
+        "label": "antibullying",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d854d9598ffbce65",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f5f7c9c4b7053c28",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "e9bb01912507f2e1",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "f3a9e89e2e8363f5",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "f5f7c9c4b7053c28",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "e9bb01912507f2e1",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "9a4857675bf98276",
+        "type": "ui-group",
+        "name": "antibullying",
+        "page": "f3a9e89e2e8363f5",
+        "width": 6,
+        "height": 1,
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "d622e6765358c1c4",
+        "type": "telegram bot",
+        "botname": "AntibullyingAlertBot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "b620e721f01b7bcc",
+        "type": "mqtt in",
+        "z": "5d2b2732480a3bf7",
+        "name": "alert",
+        "topic": "school/alert",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "d854d9598ffbce65",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 290,
+        "y": 360,
+        "wires": [
+            [
+                "91dff8a6cc7cb157"
+            ]
+        ]
+    },
+    {
+        "id": "3a1ffd275635367b",
+        "type": "ui-text",
+        "z": "5d2b2732480a3bf7",
+        "group": "9a4857675bf98276",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "event",
+        "label": "event",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload.event",
+        "valueType": "msg",
+        "x": 710,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "91dff8a6cc7cb157",
+        "type": "json",
+        "z": "5d2b2732480a3bf7",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 510,
+        "y": 360,
+        "wires": [
+            [
+                "3a1ffd275635367b",
+                "b4b7e7c402abd2e6",
+                "1826b29fdf054781",
+                "3f3a027b98fa8d39"
+            ]
+        ]
+    },
+    {
+        "id": "b4b7e7c402abd2e6",
+        "type": "ui-text",
+        "z": "5d2b2732480a3bf7",
+        "group": "9a4857675bf98276",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "confidence",
+        "label": "confidence",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload.confidence",
+        "valueType": "msg",
+        "x": 730,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "1826b29fdf054781",
+        "type": "ui-text",
+        "z": "5d2b2732480a3bf7",
+        "group": "9a4857675bf98276",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "camera",
+        "label": "camera",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload.camera",
+        "valueType": "msg",
+        "x": 720,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "682d853e1aea1c5d",
+        "type": "telegram sender",
+        "z": "5d2b2732480a3bf7",
+        "name": "AntibullyingTelegram",
+        "bot": "d622e6765358c1c4",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1000,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ceec9cb120c71102",
+        "type": "function",
+        "z": "5d2b2732480a3bf7",
+        "name": "bully_alert",
+        "func": "var data = msg.payload;   // ✅ save original MQTT data\n\nmsg.payload = {};\nmsg.payload.chatId = -1003832162300;   // replace with your ID\nmsg.payload.type = 'message';\nmsg.payload.content =\n    \"⚠️ Bullying Detected!\\n\" +\n    \"Event: \" + data.event + \"\\n\" +\n    \"Confidence: \" + data.confidence + \"\\n\" +\n    \"Camera: \" + data.camera;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c9a6e9692118cd58",
+        "type": "inject",
+        "z": "5d2b2732480a3bf7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 680,
+        "wires": [
+            [
+                "c99d18f4de18bdaa"
+            ]
+        ]
+    },
+    {
+        "id": "c99d18f4de18bdaa",
+        "type": "function",
+        "z": "5d2b2732480a3bf7",
+        "name": "function 1",
+        "func": "msg.payload = {};\nmsg.payload.chatId = -1003832162300;\nmsg.payload.type = 'message';\nmsg.payload.content = 'hello, World123!';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 680,
+        "wires": [
+            [
+                "9942844777c53b08"
+            ]
+        ]
+    },
+    {
+        "id": "9942844777c53b08",
+        "type": "telegram sender",
+        "z": "5d2b2732480a3bf7",
+        "name": "",
+        "bot": "d622e6765358c1c4",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 960,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a6e197afcd03c5a1",
+        "type": "function",
+        "z": "5d2b2732480a3bf7",
+        "name": "bully_alert_image",
+        "func": "msg.payload = {\n    chatId: -1003832162300,   // your real chat ID\n    type: \"photo\",\n    content: \"/home/pi5/Pictures/bullying.jpeg\",\n    caption: \"📸 Test sending image from Raspberry Pi 5\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 200,
+        "wires": [
+            [
+                "50e68ada53066720"
+            ]
+        ]
+    },
+    {
+        "id": "50e68ada53066720",
+        "type": "telegram sender",
+        "z": "5d2b2732480a3bf7",
+        "name": "telegram_alert",
+        "bot": "d622e6765358c1c4",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "08b83421858db382",
+        "type": "inject",
+        "z": "5d2b2732480a3bf7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "a6e197afcd03c5a1"
+            ]
+        ]
+    },
+    {
+        "id": "b41313bfab0e9890",
+        "type": "function",
+        "z": "5d2b2732480a3bf7",
+        "name": "bully_alert_image2",
+        "func": "var data = msg.payload;   // MQTT JSON data\n\nmsg.payload = {\n    chatId: -1003832162300,\n    type: \"photo\",\n    content: data.image,   // your image\n    caption:\n        \"⚠️ Bullying Detected!\\n\" +\n        \"Event: \" + data.event + \"\\n\" +\n        \"Confidence: \" + data.confidence + \"\\n\" +\n        \"Camera: \" + data.camera\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3f3a027b98fa8d39",
+        "type": "function",
+        "z": "5d2b2732480a3bf7",
+        "name": "function 3",
+        "func": "msg.payload = {\n    image: \"/image/bullying.jpeg?t=\" + new Date().getTime(),\n    event: msg.payload.event,        // from MQTT JSON\n    confidence: msg.payload.confidence\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 560,
+        "wires": [
+            [
+                "17ce1cbc1153594c"
+            ]
+        ]
+    },
+    {
+        "id": "17ce1cbc1153594c",
+        "type": "ui-template",
+        "z": "5d2b2732480a3bf7",
+        "group": "9a4857675bf98276",
+        "page": "",
+        "ui": "",
+        "name": "ui_template_image",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<div style=\"text-align:center;\">\n    <img ng-src=\"{{msg.payload.image}}\" width=\"300\"><br>\n    <b>Event:</b> {{msg.payload.event}}<br>\n    <b>Confidence:</b> {{msg.payload.confidence}}\n</div>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 990,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "80ee4b9b87ccf7e6",
+        "type": "inject",
+        "z": "5d2b2732480a3bf7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 820,
+        "wires": [
+            [
+                "f8410f2d4a36e8a5"
+            ]
+        ]
+    },
+    {
+        "id": "f8410f2d4a36e8a5",
+        "type": "function",
+        "z": "5d2b2732480a3bf7",
+        "name": "function 2",
+        "func": "msg.payload = {\n    image: \"/image/bullying.jpeg\",  // path to image in Node-RED public folder\n    event: \"Bullying at school detected\",\n    confidence: 0.89\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 820,
+        "wires": [
+            [
+                "f91c333e4bf8874d"
+            ]
+        ]
+    },
+    {
+        "id": "f91c333e4bf8874d",
+        "type": "ui-template",
+        "z": "5d2b2732480a3bf7",
+        "group": "9a4857675bf98276",
+        "page": "",
+        "ui": "",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<div style=\"text-align:center;\">\n    <img ng-src=\"{{msg.payload.image}}\" width=\"300\"><br>\n    <b>Event:</b> {{msg.payload.event}}<br>\n    <b>Confidence:</b> {{msg.payload.confidence}}\n</div>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 880,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    }
+]
